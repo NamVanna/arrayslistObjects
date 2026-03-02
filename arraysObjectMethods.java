@@ -35,7 +35,7 @@ class Company {
         int id = Integer.parseInt(ids);
         boolean found = false ;
         for(int i =0 ; i < emp.size() ; i++){
-             found = true ;
+
             if(id == emp.get(i).getId()){
                 System.out.println("Please input your name  :");
                 String name = sc.nextLine().strip();
@@ -47,10 +47,30 @@ class Company {
                 emp.get(i).setName(name) ;
                 emp.get(i).setAge(age);
                 System.out.println("Employee updated successfully!");
+                found = true ;
                 break;
             }
         }
-        if(found){
+        if(!found){
+            System.out.println("not found !!");
+        }
+    }
+
+    public void deleteEmployee(){
+        System.out.print("Please input your id :");
+        String ids  = sc.nextLine().strip();
+        int id = Integer.parseInt(ids);
+        boolean found = false ;
+        for(int i =0 ; i < emp.size() ; i++){
+
+            if(id == emp.get(i).getId()){
+                emp.remove(i);
+                System.out.println("Employee delete successfully!");
+                found = true ;
+                break;
+            }
+        }
+        if(!found){
             System.out.println("not found !!");
         }
     }
@@ -133,6 +153,13 @@ public class arraysObjectMethods {
                     System.out.println("================= ");
                     System.out.println("===update employee======");
                     company.updateEmployee();
+                    break;
+                }
+                case "4" :
+                {
+                    System.out.println("================= ");
+                    System.out.println("==delete employee======");
+                    company.deleteEmployee();
                     break;
                 }
             }
